@@ -33,6 +33,6 @@ def run_agent(query: str) -> str:
     return result["messages"][-1].content
 
 if __name__ == "__main__":
-    query = "What is the current stock price of AAPL?"
+    query = "What is the current stock price of AAPL? And suggest me whether to buy or sell."
     response = run_agent(query)
     print(response)
