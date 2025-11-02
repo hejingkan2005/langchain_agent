@@ -1,14 +1,21 @@
 # Implement a demo agent by using langchain, it should call LM Studio API to get responses.
 # The API based url is https://b90cdc2db71f.ngrok-free.app and model name is qwen2.5-14b-instruct-1m, it has no api key.
+import os
+from pathlib import Path
+from dotenv import load_dotenv
 from langchain_openai import ChatOpenAI
 from langchain_core.tools import tool
 from langchain_core.messages import HumanMessage
 from langchain.agents import create_agent
 
+env_path = Path(__file__).parent.parent / '.env'
+load_dotenv(dotenv_path=env_path)
+
+
 # Set up the LLM with your LM Studio API endpoint
 llm = ChatOpenAI(
-    model="qwen2.5-14b-instruct-1m",
-    base_url="https://b90cdc2db71f.ngrok-free.app/v1",
+    model=os.getenv("LLM_Model"),
+    base_url=os.getenv("LLM_Base_URL"),
     api_key="dummy",  # Required parameter, even if not used
     temperature=0,
 )
