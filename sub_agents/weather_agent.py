@@ -55,6 +55,6 @@ tools = [get_weather]
 agent_executor = create_agent(llm, tools)
 
 # 运行 Agent
-response = agent_executor.invoke({"messages": [HumanMessage(content="请问今天上海天气怎么样？适合户外运动吗?")]})
+response = agent_executor.invoke({"messages": [HumanMessage(content="请问今天西安和上海天气怎么样？适合户外运动吗?")]})
 
 print(response["messages"][-1].content)
