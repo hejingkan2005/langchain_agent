@@ -24,11 +24,11 @@ token_provider = get_bearer_token_provider(
 )
 
 llm = AzureChatOpenAI(
-    azure_endpoint="https://discovery-eastus.openai.azure.com/",
+    azure_endpoint=os.getenv("AZURE_ENDPOINT"),
     azure_ad_token_provider=token_provider,
     api_version="2024-10-21",
-    deployment_name="gpt-4o-mini-2024-07-18-global",  # Replace with your actual deployment name
-    model="gpt-4o",
+    deployment_name=os.getenv("DEPLOYMENT_NAME"),
+    model=os.getenv("MODEL_NAME"),
 )
 
 
